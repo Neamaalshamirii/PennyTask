@@ -31,7 +31,6 @@ Includes authentication, protected pages, product list and password reset.
   - Email: `test@example.com`  
   - Password: `test1234`
 
-_(Change these values to whatever you actually set up.)_
 
 ## Running Locally
 
