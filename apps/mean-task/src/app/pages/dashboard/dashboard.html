@@ -1,0 +1,117 @@
+<div class="dashboard-shell">
+
+  <!-- HEADER -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <h1>Overview</h1>
+      <p>
+        Welcome back, {{ displayName }}.
+        Here’s what’s happening in your system today.
+      </p>
+    </div>
+
+   <div class="header-actions">
+  <button
+    type="button"
+    class="primary-btn"
+    routerLink="/products">
+    Products
+  </button>
+
+
+
+      <button type="button" class="secondary-btn" (click)="logout()">
+        Sign out
+      </button>
+    </div>
+  </header>
+
+  <!-- STAT CARDS -->
+  <section class="dashboard-grid">
+
+    <!-- TOTAL USERS -->
+    <div class="glass-card stat-card">
+      <p class="stat-label">Total Users</p>
+      <p class="stat-value">
+        {{ stats.users || 0 }}
+      </p>
+      <p class="stat-change positive">Community Growth</p>
+    </div>
+
+    <!-- LOGINS TODAY -->
+    <div class="glass-card stat-card">
+      <p class="stat-label">Logins Today</p>
+      <p class="stat-value">
+        {{ stats.loginsToday || 0 }}
+      </p>
+      <p class="stat-change neutral">
+        Updated live
+      </p>
+    </div>
+
+    <!-- NEW USERS THIS WEEK -->
+    <div class="glass-card stat-card">
+      <p class="stat-label">New Users This Week</p>
+      <p class="stat-value">
+        {{ stats.newUsersThisWeek || 0 }}
+      </p>
+      <p class="stat-change positive">
+        New signups this week 🎉
+      </p>
+    </div>
+
+  </section>
+
+  <!-- USERS TABLE -->
+  <section class="glass-card table-card">
+    <div class="table-header">
+      <h2>Recent activity</h2>
+      <p>Live user activity fetched from your API.</p>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Email</th>
+            <th>Joined</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- If no users -->
+          <tr *ngIf="users.length === 0">
+            <td colspan="4" style="text-align:center; padding:1rem; color:#aaa;">
+              No users found yet.
+            </td>
+          </tr>
+
+          <!-- Users Loop -->
+          <tr *ngFor="let user of users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.createdAt | date:'short' }}</td>
+
+            <td>
+              <span 
+                class="badge" 
+                [ngClass]="{
+                  'badge-success': user.lastLoginAt,
+                  'badge-outline': !user.lastLoginAt
+                }"
+              >
+                {{ user.lastLoginAt ? 'Active' : 'New' }}
+              </span>
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+    </div>
+  </section>
+
+</div>

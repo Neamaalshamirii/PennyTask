@@ -1,0 +1,355 @@
+/* PAGE LAYOUT */
+.products-shell {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+  color: #e5e7eb;
+}
+
+.products-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: .4rem;
+  font-weight: 700;
+}
+
+.products-header p {
+  font-size: 1rem;
+  color: rgba(148,163,184,0.85);
+  margin-top: 0;
+}
+
+/* MAIN CARD */
+.glass-card {
+  margin: 3rem auto;
+  background: radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 70%)
+              border-box,
+              rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(148,163,184,0.25);
+  border-radius: 1.5rem;
+  padding: 2.5rem 3rem;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+  width: 100%;
+  max-width: 1100px;
+  text-align: left;
+}
+
+.table-header h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.table-header p {
+  margin-top: .3rem;
+  color: rgba(148,163,184,0.85);
+  margin-bottom: 1.4rem;
+}
+
+/* TABLE */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  padding: .9rem .6rem;
+  color: rgba(148,163,184,0.75);
+  text-transform: uppercase;
+  font-size: .75rem;
+  letter-spacing: .08em;
+  border-bottom: 1px solid rgba(148,163,184,0.2);
+}
+
+td {
+  padding: 1rem .6rem;
+  font-size: 1rem;
+  color: #f8fafc;
+}
+
+/* Table R0W Styling */
+tbody tr:nth-child(odd) {
+  background: rgba(255,255,255,0.03);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.06);
+}
+
+tbody tr:hover {
+  background: rgba(255,255,255,0.12);
+  transition: .2s ease;
+}
+
+.empty {
+  text-align: center;
+  padding: 2rem !important;
+  color: rgba(148,163,184,0.7);
+  font-style: italic;
+}
+
+/* STOCK BADGES */
+.stock-pill {
+  padding: .2rem .6rem;
+  border-radius: .4rem;
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+.stock-pill.low {
+  background: rgba(239,68,68,0.2);
+  color: #fecaca;
+}
+
+.stock-pill.medium {
+  background: rgba(234,179,8,0.2);
+  color: #fde68a;
+}
+
+.stock-pill.high {
+  background: rgba(34,197,94,0.2);
+  color: #bbf7d0;
+}
+
+/* CATEGORY BADGES */
+.badge {
+  padding: .25rem .6rem;
+  border-radius: 20px;
+  font-size: .85rem;
+  font-weight: 500;
+  color: white;
+}
+
+.badge.electronics {
+  background: rgba(96,165,250,0.35);
+}
+
+.badge.audio {
+  background: rgba(167,139,250,0.35);
+}
+
+/* RESPONSIVE */
+@media (max-width: 780px) {
+  .glass-card {
+    padding: 1.8rem 1.4rem;
+  }
+  .products-header h1 {
+    font-size: 2rem;
+  }
+}
+/* Backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(6px);
+  z-index: 90;
+  opacity: 1;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 420px;
+}
+
+.modal-content {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+  color: #e2e8f0;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Form */
+.modal-content label {
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(255,255,255,0.05);
+  color: #e2e8f0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.products-shell {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-top: 5rem;
+  color: white;
+}
+
+.products-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.add-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(90deg, #7b3eff, #ff44cc);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.glass-card {
+  padding: 2rem;
+  border-radius: 1rem;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-top: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  text-transform: uppercase;
+  color: #aaa;
+  font-size: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.03);
+}
+
+td {
+  padding: 0.8rem 0;
+}
+
+.stock-pill {
+  padding: 4px 10px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: black;
+}
+
+.stock-pill.low { background: #ff6961; }
+.stock-pill.medium { background: #f1c232; }
+.stock-pill.high { background: #b6d7a8; }
+
+.category {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.electronics { background: #4a90e2; }
+.audio { background: #9b59b6; }
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(16px);
+  padding: 2rem;
+  width: 400px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.modal-body label {
+  font-size: 0.85rem;
+  color: #ccc;
+  margin-top: 1rem;
+  display: block;
+}
+
+.modal-body input,
+.modal-body select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.4rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  border-radius: 6px;
+}
+
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+button.primary {
+  background: #6c5ce7;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  color: white;
+  border-radius: 6px;
+}
+
+button.secondary {
+  background: rgba(255,255,255,0.1);
+  padding: 0.5rem 1.2rem;
+  border: none;
+  color: #ddd;
+  border-radius: 6px;
+}
+/* Fix invisible dropdown options */
+.modal-body select,
+.modal-body option {
+  color: #000 !important;          /* Make text black */
+  background-color: #fff !important; /* Make dropdown white */
+}
+
+/* Style the closed select box itself */
+.modal-body select {
+  background-color: rgba(255,255,255,0.9) !important;
+  color: #000 !important;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+/* Optional: Hover effect for options */
+.modal-body option:hover {
+  background-color: #f0f0f0 !important;
+}

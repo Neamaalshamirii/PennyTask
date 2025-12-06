@@ -1,0 +1,70 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="auth-badge">Welcome back</div>
+      <h1>Sign in</h1>
+      <p>Access your account to continue to the dashboard.</p>
+    </div>
+
+    <!-- IMPORTANT: form now uses (ngSubmit) -->
+    <form class="auth-form" (ngSubmit)="onSubmit()">
+      
+      <!-- EMAIL -->
+      <div class="field">
+        <label for="email">Email</label>
+        <div class="field-input">
+          <input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            [(ngModel)]="email"
+            name="email"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="field-input">
+          <input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </div>
+      </div>
+
+      
+     <div class="field field-inline">
+  <a class="link subtle" routerLink="/forgot-password">Forgot password?</a>
+</div>
+
+
+      <!-- SUBMIT BUTTON -->
+      <button 
+        type="submit" 
+        class="primary-btn full" 
+        [disabled]="loading"
+      >
+        {{ loading ? 'Signing in…' : 'Sign in' }}
+      </button>
+
+      <!-- ERROR MESSAGE -->
+      <p *ngIf="error" class="error-text">{{ error }}</p>
+
+    </form>
+
+    <!-- FOOTER -->
+    <p class="auth-footer">
+      Don’t have an account?
+      <a class="link" routerLink="/signup">Create one</a>
+    </p>
+  </div>
+</div>

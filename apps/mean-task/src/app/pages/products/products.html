@@ -1,0 +1,116 @@
+<div class="products-shell">
+
+  <header class="products-header">
+    <h1>Products List</h1>
+    <p>Live product data from your API</p>
+
+    <button class="add-btn" (click)="openModal()">+ Add Product</button>
+  </header>
+
+  <section class="glass-card inventory-card">
+
+    <div class="table-header">
+      <h2>Inventory</h2>
+      <p>Manage your store items in real-time.</p>
+    </div>
+
+    <div class="table-wrapper">
+
+      <!-- Optional loading indicator -->
+      <p *ngIf="loading$ | async" class="loading">Loading products...</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Category</th>
+            <th>Added</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- Access all products once using *ngIf -->
+          <ng-container *ngIf="(products$ | async) as products">
+
+            <!-- Empty state -->
+            <tr *ngIf="products.length === 0">
+              <td colspan="5" class="empty">No products found.</td>
+            </tr>
+
+            <!-- Loop products -->
+            <tr *ngFor="let p of products">
+              <td>{{ p.name }}</td>
+
+              <td>{{ p.price | currency:'USD' }}</td>
+
+              <td>
+                <span class="stock-pill"
+                      [ngClass]="{
+                        'low': p.stock < 10,
+                        'medium': p.stock >= 10 && p.stock <= 40,
+                        'high': p.stock > 40
+                      }">
+                  {{ p.stock }}
+                </span>
+              </td>
+
+              <td>
+                <span class="category"
+                      [ngClass]="{
+                        'electronics': p.category === 'Electronics',
+                        'audio': p.category === 'Audio'
+                      }">
+                  {{ p.category }}
+                </span>
+              </td>
+
+              <td>{{ p.createdAt | date:'short' }}</td>
+            </tr>
+
+          </ng-container>
+
+        </tbody>
+      </table>
+
+    </div>
+  </section>
+
+
+  <!-- 🔥 ADD PRODUCT MODAL -->
+  <div class="modal-backdrop" *ngIf="showModal">
+    <div class="modal">
+      <h2>Add Product</h2>
+
+      <div class="modal-body">
+
+        <label>Name</label>
+        <input type="text" [(ngModel)]="newProduct.name">
+
+        <label>Price (USD)</label>
+        <input type="number" [(ngModel)]="newProduct.price">
+
+        <label>Stock</label>
+        <input type="number" [(ngModel)]="newProduct.stock">
+
+        <label>Category</label>
+        <select [(ngModel)]="newProduct.category">
+          <option>Electronics</option>
+          <option>Audio</option>
+          <option>Clothing</option>
+          <option>Accessories</option>
+        </select>
+
+      </div>
+
+      <div class="modal-actions">
+        <button class="secondary" (click)="closeModal()">Cancel</button>
+        <button class="primary" (click)="addProduct()">Add</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

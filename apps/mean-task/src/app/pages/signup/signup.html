@@ -1,0 +1,91 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <div class="auth-header">
+      <div class="auth-badge">Create account</div>
+      <h1>Sign up</h1>
+      <p>Join and start using the dashboard in just a minute.</p>
+    </div>
+
+    <form class="auth-form" (ngSubmit)="onSubmit()">
+
+      <!-- NAME -->
+      <div class="field">
+        <label for="name">Full name</label>
+        <div class="field-input">
+          <input
+            id="name"
+            type="text"
+            placeholder="Jane Doe"
+            autocomplete="name"
+            [(ngModel)]="name"
+            name="name"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- EMAIL -->
+      <div class="field">
+        <label for="email">Email</label>
+        <div class="field-input">
+          <input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            autocomplete="email"
+            [(ngModel)]="email"
+            name="email"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- PASSWORD -->
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="field-input">
+          <input
+            id="password"
+            type="password"
+            placeholder="Create a strong password"
+            autocomplete="new-password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- CONFIRM PASSWORD -->
+      <div class="field">
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="field-input">
+          <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Repeat your password"
+            autocomplete="new-password"
+            [(ngModel)]="confirmPassword"
+            name="confirmPassword"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- BUTTON -->
+      <button type="submit" class="primary-btn full" [disabled]="loading">
+        {{ loading ? 'Creating account…' : 'Create account' }}
+      </button>
+
+      <!-- ERROR MESSAGE -->
+      <p *ngIf="error" class="error-text">{{ error }}</p>
+
+    </form>
+
+    <p class="auth-footer">
+      Already have an account?
+      <a class="link" routerLink="/login">Sign in</a>
+    </p>
+  </div>
+</div>

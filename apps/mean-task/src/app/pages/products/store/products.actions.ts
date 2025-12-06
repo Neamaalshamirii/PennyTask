@@ -1,0 +1,31 @@
+import { createAction, props } from '@ngrx/store';
+import { Product } from './products.state';
+
+// Load products
+export const loadProducts = createAction('[Products] Load Products');
+
+export const loadProductsSuccess = createAction(
+  '[Products] Load Products Success',
+  props<{ products: Product[] }>()
+);
+
+export const loadProductsFailure = createAction(
+  '[Products] Load Products Failure',
+  props<{ error: string }>()
+);
+
+// Add product
+export const addProduct = createAction(
+  '[Products] Add Product',
+  props<{ product: Product }>()
+);
+
+export const addProductSuccess = createAction(
+  '[Products] Add Product Success',
+  props<{ product: Product }>()
+);
+
+export const addProductFailure = createAction(
+  '[Products] Add Product Failure',
+  props<{ error: string }>()
+);
