@@ -4,25 +4,24 @@
   "projectType": "application",
   "prefix": "app",
   "sourceRoot": "apps/mean-task/src",
-  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/mean-task",
-        "index": "apps/mean-task/src/index.html",
-        "main": "apps/mean-task/src/main.ts",
-        "polyfills": ["zone.js"],
-        "tsConfig": "apps/mean-task/tsconfig.app.json",
-        "assets": [
-          {
-            "glob": "**/*",
-            "input": "apps/mean-task/public"
-          }
-        ],
-        "styles": ["apps/mean-task/src/styles.css"]
-      },
+  "outputPath": "dist/apps/mean-task",
+  "index": "apps/mean-task/src/index.html",
+  "main": "apps/mean-task/src/main.ts",
+  "polyfills": ["zone.js"],
+  "tsConfig": "apps/mean-task/tsconfig.app.json",
+  "assets": [
+    "apps/mean-task/src/favicon.ico",
+    "apps/mean-task/src/assets"
+  ],
+  "styles": ["apps/mean-task/src/styles.css"],
+  "extractLicenses": false
+},
+
       "configurations": {
         "production": {
           "budgets": [
@@ -47,11 +46,9 @@
           "sourceMap": true,
           "namedChunks": true
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "serve": {
-      "continuous": true,
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
@@ -62,23 +59,6 @@
         }
       },
       "defaultConfiguration": "development"
-    },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
-      "options": {
-        "buildTarget": "mean-task:build"
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
-    },
-    "serve-static": {
-      "continuous": true,
-      "executor": "@nx/web:file-server",
-      "options": {
-        "buildTarget": "mean-task:build",
-        "spa": true
-      }
     }
   }
 }

@@ -8,18 +8,23 @@ export class StatsService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   async generateStats() {
+    // 1) Total users
     const totalUsers = await this.userModel.countDocuments();
 
-    // Logins today (placeholder — add real tracking later)
-    const loginsToday = Math.floor(Math.random() * 40);
+    // 2) Logins today
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);
 
-    // Users created within last 7 days
-    const today = new Date();
-    const weekAgo = new Date();
-    weekAgo.setDate(today.getDate() - 7);
+    const loginsToday = await this.userModel.countDocuments({
+      lastLoginAt: { $gte: startOfDay },
+    });
+
+    // 3) New users this week (last 7 days)
+    const startOfWeek = new Date();
+    startOfWeek.setDate(startOfWeek.getDate() - 7);
 
     const newUsersThisWeek = await this.userModel.countDocuments({
-      createdAt: { $gte: weekAgo },
+      createdAt: { $gte: startOfWeek },
     });
 
     return {

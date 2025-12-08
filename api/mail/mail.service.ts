@@ -16,7 +16,8 @@ export class MailService {
   }
 
   async sendResetEmail(to: string, token: string) {
-  const resetLink = `http://localhost:4200/reset-password/${token}`;
+  const resetLink = `https://mean-task-api.web.app/reset-password/${token}`;
+
 
   return this.transporter.sendMail({
     from: `"Task App" <${process.env.EMAIL_USER}>`,
